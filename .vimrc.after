@@ -1,0 +1,26 @@
+set background=dark
+
+" alias :Q to quit
+command -bang Q quit<bang>
+
+" auto :Fmt for *.go files
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
+
+" disable Ex mode shortcut
+nnoremap Q <Nop>
+
+" enable tagbar
+filetype on
+let g:tagbar_type_go = {
+    \ 'ctagstype': 'go',
+    \ 'kinds' : [
+        \'p:package',
+        \'f:function',
+        \'v:variables',
+        \'t:type',
+        \'c:const'
+    \]
+\}
+
+" disable swapfiles; they cause more trouble then they're worth
+set noswapfile
