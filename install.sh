@@ -13,7 +13,7 @@ libpq-dev bison libxslt1-dev zlib1g-dev libreadline-dev libxslt-dev \
 libxml2-dev libcurl4-openssl-dev libpcre3-dev
 
 # helpful tools
-sudo apt-get -y install tree htop ctags tmux tig graphviz ack-grep r-base paman ethtool
+sudo apt-get -y install tree htop ctags tmux tig graphviz ack-grep r-base paman ethtool python-pip
 
 # install zsh
 sudo apt-get -y install zsh
