@@ -44,7 +44,7 @@ rbenv install 2.0.0-p247
 rbenv global  2.0.0-p247
 
 # install helpful gems
-gem install bundler tmuxinator hookup
+gem install --no-ri --no-rdoc bundler tmuxinator hookup
 rbenv rehash
 
 # divert ack to ack-grep
