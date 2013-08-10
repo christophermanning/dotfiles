@@ -1,0 +1,7 @@
+! microsoft natural 'application key' to control
+keycode 135 = Control_L
+add Control = Control_L
+
+! caps lock to escape
+clear Lock
+keycode 0x42 = Escape
