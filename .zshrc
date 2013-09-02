@@ -56,6 +56,7 @@ export PATH=$PATH:$GOPATH/bin
 alias :q='exit'
 alias :Q='exit'
 alias R='R --quiet'
+alias xc='xclip -selection clipboard'
 export EDITOR='vi'
 
 # tmuxinator
