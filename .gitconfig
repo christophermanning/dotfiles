@@ -6,5 +6,5 @@
 [merge]
   tool = vimdiff
 [web]
-	browser = chromium
+  browser = chromium
 
