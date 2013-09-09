@@ -5,3 +5,6 @@
   excludesfile = ~/.gitignore_global
 [merge]
   tool = vimdiff
+[web]
+	browser = chromium
+
