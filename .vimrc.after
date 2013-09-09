@@ -1,7 +1,9 @@
 set background=dark
 
-" alias :Q to quit
-command -bang Q quit<bang>
+" sticky shift aliases
+command WQ wq
+command Wq wq
+command Q q
 
 " auto :Fmt for *.go files
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
@@ -24,3 +26,10 @@ let g:tagbar_type_go = {
 
 " disable swapfiles; they cause more trouble then they're worth
 set noswapfile
+
+" Tell CtrlP to ignore certain files and directories
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gz
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  'node_modules$\|\.git$\|\_site$',
+    \ 'file': '\.DS_Store$\|\.jpg$\|\.png$\|\.jpeg$\|\jpeg.gif$\|\.svg$'
+    \ }
