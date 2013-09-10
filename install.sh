@@ -10,7 +10,7 @@ sudo apt-get -y install build-essential openssl libreadline6 libreadline6-dev \
 libyaml-dev zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libmysqlclient-dev ruby-dev \
 libxml2-dev autoconf libc6-dev libncurses5-dev automake libtool bison  \
 libpq-dev bison libxslt1-dev zlib1g-dev libreadline-dev libxslt-dev \
-libxml2-dev libcurl4-openssl-dev libpcre3-dev
+libxml2-dev libcurl4-openssl-dev libpcre3-dev python-dev
 
 # helpful tools
 sudo apt-get -y install tree htop ctags tmux tig graphviz ack-grep r-base paman ethtool python-pip mercurial xclip
