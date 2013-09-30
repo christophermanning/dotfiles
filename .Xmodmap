@@ -2,6 +2,10 @@
 keycode 135 = Control_L
 add Control = Control_L
 
+! code keyboard right os(super) key to control
+remove mod4 = Super_R
+add control = Super_R
+
 ! caps lock to escape
 clear Lock
 keycode 0x42 = Escape
