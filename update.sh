@@ -2,7 +2,7 @@
 
 dir=~/dotfiles
 olddir=~/dotfiles_old
-files="gemrc gdbinit gitconfig gitignore_global irbrc Rprofile tmux.conf vimrc.after Xmodmap zshrc"
+files="gemrc gdbinit gitconfig gitignore_global irbrc Rprofile tigrc tmux.conf vimrc.after Xmodmap zshrc"
 
 echo -n "Creating $olddir for backup of any existing dotfiles in ~ "
 mkdir -p $olddir
