@@ -33,3 +33,5 @@ let g:ctrlp_custom_ignore = {
     \ 'dir':  'node_modules$\|\.git$\|\_site$',
     \ 'file': '\.DS_Store$\|\.jpg$\|\.png$\|\.jpeg$\|\jpeg.gif$\|\.svg$'
     \ }
+
+nnoremap <esc> :noh<return><esc>
