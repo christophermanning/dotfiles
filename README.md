@@ -1,10 +1,12 @@
 # Install
 
-    sudo apt-get -y install git-core
-    git clone git://github.com/christophermanning/dotfiles.git ~/dotfiles
-    sudo chmod o+x ~/dotfiles/install.sh ~/dotfiles/update.sh
-    sudo ~/dotfiles/install.sh
+    cd ~
+    sudo apt-get -y install git
+    git clone git://github.com/christophermanning/dotfiles.git ~/.dotfiles
+    pushd .dotfiles
+    chmod u+x install.sh 
+    ./install.sh
+    popd
+    rcup rcrc
+    rcup
 
-# Update
-
-    ~/dotfiles/update.sh
