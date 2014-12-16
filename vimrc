@@ -1,5 +1,4 @@
-" Use Vim settings, rather then Vi settings 
-set nocompatible
+source ~/.vimrc.janus
 
 " Set leader key to a backslash
 let mapleader="\\"
@@ -39,7 +38,6 @@ let g:tagbar_type_go = {
 set noswapfile
 
 " Tell CtrlP to ignore certain files and directories
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gz
 let g:ctrlp_custom_ignore = {
     \ 'dir':  'node_modules$\|\.git$\|\_site$',
     \ 'file': '\.DS_Store$\|\.jpg$\|\.png$\|\.jpeg$\|\jpeg.gif$\|\.svg$'
@@ -51,3 +49,4 @@ nnoremap <CR> :noh<CR><CR>
 " NERDTree
 map <leader>n :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
