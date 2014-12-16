@@ -14,7 +14,8 @@
 
 ## Add vim plugin
 
-    git submodule add https://github.com/tpope/vim-pathogen.git ~/.dotfiles/vim/bundle/vim-pathogen
+    ./install_vim_plugin.sh
+    > https://github.com/tpope/vim-pathogen.git
 
 ## Remove vim plugin
 
