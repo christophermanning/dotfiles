@@ -47,3 +47,7 @@ let g:ctrlp_custom_ignore = {
 
 " ESC should clear highlighted search terms
 nnoremap <CR> :noh<CR><CR>
+
+" NERDTree
+map <leader>n :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
