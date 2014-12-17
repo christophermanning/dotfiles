@@ -52,3 +52,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 " vim-move
 let g:move_key_modifier = 'C'
+
+" NERDCommenter
+filetype plugin on
