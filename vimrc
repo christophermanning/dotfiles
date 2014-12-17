@@ -50,3 +50,5 @@ nnoremap <CR> :noh<CR><CR>
 map <leader>n :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" vim-move
+let g:move_key_modifier = 'C'
