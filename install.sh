@@ -25,6 +25,11 @@ sudo dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep
 sudo apt-get -y install chromium-browser
 sudo ln -s /etc/alternatives/x-www-browser /usr/bin/google-chrome
 
+# install nodejs
+sudo add-apt-repository ppa:chris-lea/node.js
+sudo apt-get -y update
+sudo apt-get -y install nodejs
+
 # install oh-my-zsh
 curl -L http://install.ohmyz.sh | sh
 chsh -s /bin/zsh

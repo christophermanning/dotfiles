@@ -27,6 +27,9 @@ source $ZSH/oh-my-zsh.sh
 export GOPATH=~/workspace/go
 export PATH=$PATH:$GOPATH/bin
 
+# NPM
+export PATH=$PATH:~/.npm/bin
+
 # VI
 export EDITOR='vi'
 bindkey -v
