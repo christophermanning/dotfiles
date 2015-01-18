@@ -26,9 +26,8 @@ sudo apt-get -y install chromium-browser
 sudo ln -s /etc/alternatives/x-www-browser /usr/bin/google-chrome
 
 # install nodejs
-sudo add-apt-repository ppa:chris-lea/node.js
-sudo apt-get -y update
-sudo apt-get -y install nodejs
+curl -sL https://deb.nodesource.com/setup | sudo bash -
+sudo apt-get install -y nodejs
 
 # install oh-my-zsh
 curl -L http://install.ohmyz.sh | sh
