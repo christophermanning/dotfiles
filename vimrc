@@ -55,3 +55,6 @@ let g:move_key_modifier = 'C'
 
 " NERDCommenter
 filetype plugin on
+
+" vim-move prevent indentation of blocks from getting lost
+let g:move_auto_indent = 0
