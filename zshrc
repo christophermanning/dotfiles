@@ -15,7 +15,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=()
 
 # User configuration
 
@@ -47,3 +47,16 @@ bindkey '^r' history-incremental-search-backward
 alias R='R --quiet'
 alias xc='xclip -selection clipboard'
 alias tig='tig status'
+
+# git aliases
+function current_branch() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
+  ref=$(git rev-parse --short HEAD 2> /dev/null) || return
+  echo ${ref#refs/heads/}
+}
+alias ggpush='git push origin $(current_branch)'
+alias gc='git commit -v'
+alias gl='git pull'
+alias gst='git status'
+alias gco='git checkout'
+alias gcm='git checkout master'
