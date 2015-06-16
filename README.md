@@ -4,13 +4,13 @@
     sudo apt-get -y install git
     git clone git://github.com/christophermanning/dotfiles.git ~/.dotfiles
     pushd .dotfiles
+    git submodule init
+    git submodule update
     chmod u+x install.sh 
     ./install.sh
     popd
     rcup rcrc
     rcup
-    git submodule init
-    git submodule update
 
 ## Add vim plugin
 
