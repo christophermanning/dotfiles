@@ -37,7 +37,7 @@ alias xc='xclip -selection clipboard'
 alias tig='tig status'
 
 # directory aliases
-l='ls -lah'
+alias l='ls -lah'
 
 # git aliases
 function current_branch() {
