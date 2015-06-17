@@ -36,6 +36,9 @@ alias R='R --quiet'
 alias xc='xclip -selection clipboard'
 alias tig='tig status'
 
+# directory aliases
+l='ls -lah'
+
 # git aliases
 function current_branch() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || \
