@@ -7,8 +7,7 @@
     chmod u+x install.sh 
     ./install.sh
     popd
-    rcup rcrc
-    rcup
+    env RCRC=$HOME/.dotfiles/rcrc rcup
 
 ## Add vim plugin
 
