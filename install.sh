@@ -7,6 +7,8 @@ sudo apt-get -y install curl tree htop ctags tmux tig ack-grep ethtool xclip zsh
 
 # install rcm
 wget https://thoughtbot.github.io/rcm/debs/rcm_1.2.3-1_all.deb
+sha=$(sha256sum rcm_1.2.3-1_all.deb | cut -f1 -d' ')
+[ "$sha" = "fb8ec2611cd4d519965b66fcf950bd93d7593773659f83a8612053217daa38b4" ] && \
 sudo dpkg -i rcm_1.2.3-1_all.deb
 
 # write git env variables; ~/.zshenv is not updated from dotfiles
