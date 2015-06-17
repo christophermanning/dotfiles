@@ -11,6 +11,9 @@ sha=$(sha256sum rcm_1.2.3-1_all.deb | cut -f1 -d' ')
 [ "$sha" = "fb8ec2611cd4d519965b66fcf950bd93d7593773659f83a8612053217daa38b4" ] && \
 sudo dpkg -i rcm_1.2.3-1_all.deb
 
+# install prezto
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+
 # write git env variables; ~/.zshenv is not updated from dotfiles
 echo "Please enter git name: "
 read git_name
