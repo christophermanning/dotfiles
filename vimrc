@@ -12,6 +12,7 @@ call pathogen#helptags()
 set background=dark
 
 " sticky shift aliases
+command W w
 command WQ wq
 command Wq wq
 command Q q
