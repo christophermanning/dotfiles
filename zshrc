@@ -49,3 +49,5 @@ alias gst='git status'
 alias gco='git checkout'
 alias gcm='git checkout master'
 alias gd='git diff'
+
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

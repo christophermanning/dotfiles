@@ -1,10 +1,12 @@
 # Install
 
-    pushd /tmp
-    curl -L https://raw.githubusercontent.com/christophermanning/dotfiles/master/install.sh
-    chmod u+x install.sh
-    sha=$(sha256sum install.sh | cut -f1 -d' ')
-    [ "$sha" = "e679bfa4c03776a710372b6632e778e2eedc3865b24c1f63da851dbb905b4077" ] && ./install.sh
+    # single command to download, verify, and run
+    pushd /tmp && \
+    wget https://raw.githubusercontent.com/christophermanning/dotfiles/master/install.sh && \
+    chmod u+x install.sh && \
+    sha=$(sha256sum install.sh | cut -f1 -d' ') && \
+    [ "$sha" = "f5973af370b19c36795d6ac3f33eb1b42966fb17b4298163992dcfb09cbc5f0f" ] && \
+    ./install.sh &&\
     popd
 
 ## Add vim plugin
