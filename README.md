@@ -1,13 +1,11 @@
 # Install
 
-    cd ~
-    sudo apt-get -y install git
-    git clone --recursive git://github.com/christophermanning/dotfiles.git ~/.dotfiles
-    pushd .dotfiles
-    chmod u+x install.sh 
-    ./install.sh
+    pushd /tmp
+    curl -L https://raw.githubusercontent.com/christophermanning/dotfiles/master/install.sh
+    chmod u+x install.sh
+    sha=$(sha256sum install.sh | cut -f1 -d' ')
+    [ "$sha" = "e679bfa4c03776a710372b6632e778e2eedc3865b24c1f63da851dbb905b4077" ] && ./install.sh
     popd
-    env RCRC=$HOME/.dotfiles/rcrc rcup
 
 ## Add vim plugin
 
