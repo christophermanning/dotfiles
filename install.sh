@@ -36,22 +36,33 @@ else
 
   # install chromium and make default
   sudo apt-get -y install chromium-browser
-  sudo ln -s /etc/alternatives/x-www-browser /usr/bin/google-chrome
+  sudo ln -sf /etc/alternatives/x-www-browser /usr/bin/google-chrome
 fi
 
 # dotfiles
-git clone --recursive git://github.com/christophermanning/dotfiles.git ~/.dotfiles
+if cd ~/.dotfiles; then
+  git pull
+else
+  git clone --recursive git://github.com/christophermanning/dotfiles.git ~/.dotfiles;
+fi
 env RCRC=$HOME/.dotfiles/rcrc rcup
 
 # zsh
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-chsh -s /bin/zsh
+if cd "${ZDOTDIR:-$HOME}/.zprezto"; then
+  git pull
+else
+  git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto";
+fi
+
+sudo chsh -s /bin/zsh
 
 # setup local files
-echo "Please enter git name: "
-read git_name
-echo "export GIT_AUTHOR_NAME=\"$git_name\" && export GIT_COMMITTER_NAME=\$GIT_AUTHOR_NAME" >> ~/.zshrc.local
+if [ -t 1 ]; then
+  echo "Please enter git name: "
+  read git_name
+  echo "export GIT_AUTHOR_NAME=\"$git_name\" && export GIT_COMMITTER_NAME=\$GIT_AUTHOR_NAME" >> ~/.zshrc.local
 
-echo "Please enter git email: "
-read git_email
-echo "export GIT_AUTHOR_EMAIL=\"$git_email\" && export GIT_COMMITTER_EMAIL=\$GIT_AUTHOR_EMAIL" >> ~/.zshrc.local
+  echo "Please enter git email: "
+  read git_email
+  echo "export GIT_AUTHOR_EMAIL=\"$git_email\" && export GIT_COMMITTER_EMAIL=\$GIT_AUTHOR_EMAIL" >> ~/.zshrc.local
+fi
