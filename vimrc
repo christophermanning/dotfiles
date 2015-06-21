@@ -38,6 +38,11 @@ let g:tagbar_type_go = {
 " disable swapfiles; they cause more trouble then they're worth
 set noswapfile
 
+" maintain indentaion when adding a new line
+set smartindent
+set autoindent
+filetype indent on
+
 " Tell CtrlP to ignore certain files and directories
 let g:ctrlp_custom_ignore = {
     \ 'dir':  'node_modules$\|\.git$\|\_site$',
