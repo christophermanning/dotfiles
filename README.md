@@ -5,7 +5,7 @@
     wget https://raw.githubusercontent.com/christophermanning/dotfiles/master/install.sh && \
     chmod u+x install.sh && \
     sha=$(sha256sum install.sh | cut -f1 -d' ') && \
-    [ "$sha" = "f5973af370b19c36795d6ac3f33eb1b42966fb17b4298163992dcfb09cbc5f0f" ] && \
+    [ "$sha" = "d9eff7f6175291b313f8a469e86a7e350b71826b28dd789da667e4c346d90cdf" ] && \
     ./install.sh &&\
     popd
 
