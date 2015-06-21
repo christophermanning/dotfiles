@@ -29,10 +29,12 @@ else
   sudo apt-get -y install git curl tree htop ctags tmux tig silversearcher-ag ethtool xclip zsh vim-gnome gnome-tweak-tool
 
   # install rcm
+  pushd /tmp
   wget https://thoughtbot.github.io/rcm/debs/rcm_1.2.3-1_all.deb
   sha=$(sha256sum rcm_1.2.3-1_all.deb | cut -f1 -d' ')
   [ "$sha" = "fb8ec2611cd4d519965b66fcf950bd93d7593773659f83a8612053217daa38b4" ] && \
   sudo dpkg -i rcm_1.2.3-1_all.deb
+  popd
 
   # install chromium and make default
   sudo apt-get -y install chromium-browser
