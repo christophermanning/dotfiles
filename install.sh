@@ -56,7 +56,7 @@ else
   git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto";
 fi
 
-sudo chsh -s /bin/zsh
+sudo chsh -s /bin/zsh $USER
 
 # setup local files
 if [ -t 1 ]; then
