@@ -3,6 +3,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# select first option when tab competing
+setopt menu_complete
+
 # Uncomment the following line to disable auto-setting terminal title.
 # for tmuxinator
 DISABLE_AUTO_TITLE="true"
