@@ -3,7 +3,7 @@ Plug 'tpope/vim-sensible'
 Plug 'rking/ag.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
 Plug 'kchmck/vim-coffee-script'
