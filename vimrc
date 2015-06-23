@@ -1,13 +1,24 @@
+call plug#begin()
+Plug 'tpope/vim-sensible'
+Plug 'rking/ag.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'ervandew/supertab'
+Plug 'scrooloose/syntastic'
+Plug 'kchmck/vim-coffee-script'
+Plug 'altercation/vim-colors-solarized'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-fugitive'
+Plug 'matze/vim-move'
+Plug 'bronson/vim-trailing-whitespace'
+call plug#end()
+
 source ~/.vimrc.janus
 
 " Set leader key to a backslash
 let mapleader="\\"
 let g:mapleader = "\\"
-
-" Include Pathogen {
-source ~/.vim/bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
-call pathogen#helptags()
 
 set background=dark
 

@@ -30,7 +30,7 @@ else
 
   # install rcm
   pushd /tmp
-  wget https://thoughtbot.github.io/rcm/debs/rcm_1.2.3-1_all.deb
+  wget -N https://thoughtbot.github.io/rcm/debs/rcm_1.2.3-1_all.deb
   sha=$(sha256sum rcm_1.2.3-1_all.deb | cut -f1 -d' ')
   [ "$sha" = "fb8ec2611cd4d519965b66fcf950bd93d7593773659f83a8612053217daa38b4" ] && \
   sudo dpkg -i rcm_1.2.3-1_all.deb
@@ -42,18 +42,26 @@ else
 fi
 
 # dotfiles
-if cd ~/.dotfiles; then
-  git pull
+if [ "$USER" = "vagrant" ]; then
+  rm -Rf ~/.dotfiles
+  cp -R /vagrant ~/.dotfiles
 else
-  git clone --recursive git://github.com/christophermanning/dotfiles.git ~/.dotfiles;
+  if cd ~/.dotfiles; then
+    git pull
+  else
+    git clone git://github.com/christophermanning/dotfiles.git ~/.dotfiles
+  fi
 fi
 env RCRC=$HOME/.dotfiles/rcrc rcup
+
+# vim-plug install plugins
+vim +PlugInstall +qa
 
 # zsh
 if cd "${ZDOTDIR:-$HOME}/.zprezto"; then
   git pull
 else
-  git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto";
+  git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 fi
 
 sudo chsh -s /bin/zsh $USER
