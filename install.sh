@@ -42,7 +42,7 @@ else
 fi
 
 # dotfiles
-if [ "$USER" = "vagrant" ]; then
+if [ $(hostname) = "dotfiles-test" ]; then
   rm -Rf ~/.dotfiles
   cp -R /vagrant ~/.dotfiles
 else
