@@ -1,4 +1,4 @@
-# Source Prezto.
+# Prezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
@@ -6,11 +6,8 @@ fi
 # select first option when tab competing
 setopt menu_complete
 
-# Uncomment the following line to disable auto-setting terminal title.
-# for tmuxinator
+# disable auto-setting terminal title for tmuxinator
 DISABLE_AUTO_TITLE="true"
-
-# User configuration
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 
@@ -27,14 +24,7 @@ bindkey -v
 export KEYTIMEOUT=1
 bindkey '^r' history-incremental-search-backward
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# Personal Aliases
 alias R='R --quiet'
 alias xc='xclip -selection clipboard'
 alias tig='tig status'
@@ -52,8 +42,10 @@ alias ggpush='git push origin $(current_branch)'
 alias gc='git commit -v'
 alias gl='git pull'
 alias gst='git status'
+alias ga='git add'
 alias gco='git checkout'
 alias gcm='git checkout master'
 alias gd='git diff'
 
+# local overrides
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
