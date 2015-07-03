@@ -2,7 +2,7 @@
 
     # single command to download, verify, and run
     pushd /tmp && \
-    wget https://raw.githubusercontent.com/christophermanning/dotfiles/master/install.sh && \
+    wget -N https://raw.githubusercontent.com/christophermanning/dotfiles/master/install.sh && \
     chmod u+x install.sh && \
     sha=$(sha256sum install.sh | cut -f1 -d' ') && \
     [ "$sha" = "e95994ecd28d355a8122bded234e2a78f088c52ca8d7aa7b75716e098df593d2" ] && \
