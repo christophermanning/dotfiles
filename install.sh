@@ -26,7 +26,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
 else
   # install packages
   sudo apt-get -y update
-  sudo apt-get -y install git curl tree htop ctags tmux tig silversearcher-ag ethtool xclip zsh vim-gnome gnome-tweak-tool
+  sudo apt-get -y install git curl tree htop ctags tmux tig silversearcher-ag ethtool xclip zsh
 
   # install rcm
   pushd /tmp
@@ -36,9 +36,11 @@ else
   sudo dpkg -i rcm_1.2.3-1_all.deb
   popd
 
-  # install chromium and make default
-  sudo apt-get -y install chromium-browser
-  sudo ln -sf /etc/alternatives/x-www-browser /usr/bin/google-chrome
+  if [ -n $GUI ]; then
+    # install gui packages
+    sudo apt-get -y install vim-gnome gnome-tweak-tool chromium-browser
+    sudo ln -sf /etc/alternatives/x-www-browser /usr/bin/google-chrome
+  fi
 fi
 
 # dotfiles

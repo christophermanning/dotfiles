@@ -1,15 +1,20 @@
-# Install
+# dotfiles
 
-    # single command to download, verify, and run
-    pushd /tmp && \
-    wget -N https://raw.githubusercontent.com/christophermanning/dotfiles/master/install.sh && \
-    chmod u+x install.sh && \
-    sha=$(sha256sum install.sh | cut -f1 -d' ') && \
-    [ "$sha" = "e95994ecd28d355a8122bded234e2a78f088c52ca8d7aa7b75716e098df593d2" ] && \
-    ./install.sh &&\
-    popd
+## Install
 
-# Components
+single command to download, verify, and run:
+
+```bash
+pushd /tmp && \
+wget -N https://raw.githubusercontent.com/christophermanning/dotfiles/master/install.sh && \
+chmod u+x install.sh && \
+sha=$(sha256sum install.sh | cut -f1 -d' ') && \
+[ "$sha" = "be10f4f2c8c6d6ba52839ee945c11ba6a40d17e71b49f3ea4e54667c4ef3ad00" ] && \
+./install.sh &&\
+popd
+```
+
+## Components
 
   - [rcm](https://github.com/thoughtbot/rcm) for rc file (dotfile) management
   - zsh
