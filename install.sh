@@ -36,7 +36,7 @@ else
   sudo dpkg -i rcm_1.2.3-1_all.deb
   popd
 
-  if [ -n $GUI ]; then
+  if [ "$GUI" == 1 ]; then
     # install gui packages
     sudo apt-get -y install vim-gnome gnome-tweak-tool chromium-browser
     sudo ln -sf /etc/alternatives/x-www-browser /usr/bin/google-chrome
