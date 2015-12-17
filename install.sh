@@ -10,7 +10,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
   brew install caskroom/cask/brew-cask
   brew update
 
-  brew install git curl tree htop ctags tmux tig the_silver_searcher
+  brew install git curl tree htop ctags tmux tig the_silver_searcher mtr colordiff
 
   brew cask install seil
   # https://pqrs.org/osx/karabiner/seil.html#usage
@@ -26,7 +26,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
 else
   # install packages
   sudo apt-get -y update
-  sudo apt-get -y install git curl tree htop ctags tmux tig silversearcher-ag ethtool xclip zsh
+  sudo apt-get -y install git curl tree htop ctags tmux tig silversearcher-ag ethtool xclip zsh mtr
 
   # install rcm
   pushd /tmp
