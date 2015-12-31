@@ -39,3 +39,6 @@ Thumbs.db
 
 # Vagrant
 .vagrant/
+
+id_rsa*
+.agignore
