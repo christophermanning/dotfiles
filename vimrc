@@ -17,6 +17,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'matze/vim-move'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'fatih/vim-go'
+Plug 'sjl/gundo.vim'
 call plug#end()
 
 source ~/.vimrc.janus
