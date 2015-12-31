@@ -33,6 +33,7 @@ command W w
 command WQ wq
 command Wq wq
 command Q q
+command Qa qa
 
 " disable Ex mode shortcut
 nnoremap Q <Nop>
