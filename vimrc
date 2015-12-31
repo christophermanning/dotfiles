@@ -16,6 +16,7 @@ Plug 'tpope/vim-repeat'
 Plug 'vim-ruby/vim-ruby'
 Plug 'matze/vim-move'
 Plug 'bronson/vim-trailing-whitespace'
+Plug 'fatih/vim-go'
 call plug#end()
 
 source ~/.vimrc.janus
@@ -32,23 +33,8 @@ command WQ wq
 command Wq wq
 command Q q
 
-" auto :Fmt for *.go files
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
-
 " disable Ex mode shortcut
 nnoremap Q <Nop>
-
-filetype on
-let g:tagbar_type_go = {
-    \ 'ctagstype': 'go',
-    \ 'kinds' : [
-        \'p:package',
-        \'f:function',
-        \'v:variables',
-        \'t:type',
-        \'c:const'
-    \]
-\}
 
 " disable swapfiles; they cause more trouble then they're worth
 set noswapfile
