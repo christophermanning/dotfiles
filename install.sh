@@ -10,7 +10,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
   brew install caskroom/cask/brew-cask
   brew update
 
-  brew install git curl tree htop ctags tmux tig the_silver_searcher mtr colordiff
+  brew install git curl tree htop ctags tmux tig the_silver_searcher mtr colordiff iproute2mac
 
   brew cask install seil
   # https://pqrs.org/osx/karabiner/seil.html#usage
