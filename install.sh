@@ -38,7 +38,7 @@ else
 
   if [ "$GUI" == 1 ]; then
     # install gui packages
-    sudo apt-get -y install vim-gnome gnome-tweak-tool chromium-browser
+    sudo apt-get -y install vim-gnome chromium-browser
     sudo ln -sf /etc/alternatives/x-www-browser /usr/bin/google-chrome
   fi
 fi
