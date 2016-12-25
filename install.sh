@@ -78,3 +78,5 @@ if [ -t 1 ]; then
   read git_email
   echo "export GIT_AUTHOR_EMAIL=\"$git_email\" && export GIT_COMMITTER_EMAIL=\$GIT_AUTHOR_EMAIL" >> ~/.zshrc.local
 fi
+
+[[ -f install_private.sh ]] && ./install_private.sh
