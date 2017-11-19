@@ -1,28 +1,67 @@
 #!/bin/bash
-
-set -e
+set -euo pipefail
 
 cd ~
 
 if [[ "$OSTYPE" == darwin* ]]; then
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  # https://github.com/Homebrew/install#install-homebrew
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  brew tap caskroom/cask
 
-  brew install caskroom/cask/brew-cask
-  brew update
-
-  brew install git curl tree htop ctags tmux tig the_silver_searcher mtr colordiff iproute2mac
-
-  brew cask install seil
-  # https://pqrs.org/osx/karabiner/seil.html#usage
-
-  brew cask install iterm2 vagrant virtualbox
-
-  brew install zsh
-
-  brew install macvim --override-system-vim
+  brew install git curl wget tree htop tmux tig the_silver_searcher mtr iproute2mac zsh vim
+  brew cask install iterm2 docker google-chrome
 
   brew tap thoughtbot/formulae
   brew install rcm
+
+  # load iterm2 preferences
+  defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.dotfiles/iterm2"
+  defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+
+  # capslock -> esc (https://developer.apple.com/library/content/technotes/tn2450/_index.html)
+  hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x700000029}]}'
+
+  # autohide dock
+  defaults write com.apple.dock autohide -bool true
+  defaults write com.apple.dock autohide-delay -float 0
+  defaults write com.apple.dock autohide-time-modifier -float 1
+  defaults write com.apple.dock static-only -bool true
+  killall Dock
+
+  # bottom right hot corner sleep display
+  defaults write com.apple.dock wvous-br-corner -int 10
+  echo 'manually set "require password immediately"'
+
+  # update date display
+  defaults write com.apple.menuextra.clock "DateFormat" 'EEE d MMM hh:mm a'
+  killall SystemUIServer
+
+  # disable alerts
+  defaults write NSGlobalDomain com.apple.sound.uiaudio.enabled -int 1
+  defaults write NSGlobalDomain com.apple.sound.beep.volume -float 0
+  killall SystemUIServer
+
+  # finder
+  defaults write com.apple.finder AppleShowAllFiles YES
+  defaults write com.apple.finder NewWindowTarget -string "PfHm"
+  defaults write com.apple.finder FXPreferredViewStyle -string Nlsv
+  killall Finder
+
+  echo 'manually disable "Automatically adjust brightness"'
+
+  # disable last login terminal prompt
+  touch ~/.hushlogin
+
+  # fonts
+  git clone https://github.com/powerline/fonts.git /tmp/fonts
+  cd /tmp/fonts
+  ./install.sh
+  rm -Rf /tmp/fonts
+
+  # enable filevault
+  sudo fdesetup enable
+
+  echo 'harden: http://docs.hardentheworld.org/OS/MacOS_10.12_Sierra/index.html'
 else
   # install packages
   sudo apt-get -y update
@@ -166,5 +205,6 @@ fi
 # install private packages
 [[ -f install_private.sh ]] && ./install_private.sh
 
-# cleanup
-sudo apt-get -y autoremove
+if [[ "$OSTYPE" != darwin* ]]; then
+  sudo apt-get -y autoremove
+fi

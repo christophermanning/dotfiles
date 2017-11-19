@@ -24,6 +24,9 @@ bindkey -v
 export KEYTIMEOUT=1
 bindkey '^r' history-incremental-search-backward
 
+# use homebrew vim instead of builtin vi
+alias vi=/usr/local/bin/vim
+
 # Personal Aliases
 alias R='R --quiet'
 alias xc='xclip -selection clipboard'

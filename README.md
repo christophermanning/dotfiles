@@ -8,8 +8,8 @@ single command to download, verify, and run:
 pushd /tmp && \
 wget -N https://raw.githubusercontent.com/christophermanning/dotfiles/master/install.sh && \
 chmod u+x install.sh && \
-sha=$(sha256sum install.sh | cut -f1 -d' ') && \
-[ "$sha" = "11f6bf9965f6feadf4fcb36c66b7bbc115d2e09995601fba59ae62a3d93309b5" ] && \
+sha=$(shasum install.sh | cut -f1 -d' ') && \
+[ "$sha" = "7b96d58fa4f17d862156843ceb077e3977348c07" ] && \
 ./install.sh && \
 popd
 ```
