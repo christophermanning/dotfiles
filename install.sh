@@ -49,8 +49,6 @@ if [[ "$OSTYPE" == darwin* ]]; then
 
   echo 'manually disable "Automatically adjust brightness"'
 
-  # disable last login terminal prompt
-  touch ~/.hushlogin
 
   # fonts
   git clone https://github.com/powerline/fonts.git /tmp/fonts
@@ -63,103 +61,23 @@ if [[ "$OSTYPE" == darwin* ]]; then
 
   echo 'harden: http://docs.hardentheworld.org/OS/MacOS_10.12_Sierra/index.html'
 else
-  # install packages
-  sudo apt-get -y update
+  echo "install packages"
+  sudo apt-get update > /dev/null
+  sudo apt-get -y install unattended-upgrades git curl tree htop ctags tmux tig silversearcher-ag ethtool xclip zsh mtr vim > /dev/null
 
-  # install updates since release
-  sudo unattended-upgrades -v
-
-  # install preferred packages
-  sudo apt-get -y install git curl tree htop ctags tmux tig silversearcher-ag ethtool xclip zsh mtr
-
-  # install rcm
+  echo "install rcm"
   pushd /tmp
-  wget -N https://thoughtbot.github.io/rcm/debs/rcm_1.3.0-1_all.deb
+  wget -q -N https://thoughtbot.github.io/rcm/debs/rcm_1.3.0-1_all.deb
   sha=$(sha256sum rcm_1.3.0-1_all.deb | cut -f1 -d' ')
   [ "$sha" = "2e95bbc23da4a0b995ec4757e0920197f4c92357214a65fedaf24274cda6806d" ] && \
   sudo dpkg -i rcm_1.3.0-1_all.deb
   popd
-
-  if [ "$GUI" == 1 ]; then
-    # install gui packages
-    sudo apt-get -y install vim-gnome chromium-browser
-
-    # install virtualbox
-    sudo tee /etc/apt/sources.list.d/virtualbox.list <<EOF
-deb http://download.virtualbox.org/virtualbox/debian xenial contrib
-EOF
-
-    pushd /tmp && \
-    wget -N https://www.virtualbox.org/download/oracle_vbox_2016.asc && \
-    fingerprint=$(gpg --with-fingerprint oracle_vbox_2016.asc | grep Key |  awk -F'= ' '{print $2}') && \
-    [ "$fingerprint" = "B9F8 D658 297A F3EF C18D  5CDF A2F6 83C5 2980 AECF" ] && \
-    sudo apt-key add oracle_vbox_2016.asc && \
-    popd
-
-    sudo apt-get update
-    sudo apt-get -y install virtualbox-5.1
-
-    # install vagrant
-    pushd /tmp
-    wget -N https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1_x86_64.deb
-    sha=$(sha256sum vagrant_1.9.1_x86_64.deb | cut -f1 -d' ')
-    [ "$sha" = "d006d6227e049725b64d8ba3967f0c82460a403ff40230515c93134d58723150" ] && \
-    sudo dpkg -i vagrant_1.9.1_x86_64.deb
-    popd
-
-    # install docker
-    sudo apt-get -y install apt-transport-https ca-certificates linux-image-extra-$(uname -r) linux-image-extra-virtual
-    sudo apt-key adv \
-               --keyserver hkp://ha.pool.sks-keyservers.net:80 \
-               --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-    echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | sudo tee /etc/apt/sources.list.d/docker.list
-    sudo apt-get update
-    sudo apt-get -y install docker-engine
-    sudo service docker start
-    sudo groupadd docker
-    sudo usermod -aG docker $USER
-
-    # install fonts
-    mkdir ~/.fonts
-    pushd ~/.fonts
-    wget -N https://github.com/powerline/fonts/raw/master/Meslo/Meslo%20LG%20M%20DZ%20Regular%20for%20Powerline.otf
-    fc-cache -vf ~/.fonts
-    popd
-
-    # terminal preferences
-    uid=$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d '\''') && \
-    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$uid/ foreground-color 'rgb(131,148,150)' && \
-    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$uid/ use-system-font false && \
-    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$uid/ use-theme-colors false && \
-    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$uid/ use-theme-transparency false && \
-    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$uid/ font 'Meslo LG M DZ for Powerline 12' && \
-    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$uid/ scrollback-unlimited true && \
-    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$uid/ background-color 'rgb(0,43,54)'
-
-    # desktop preferences
-    gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.Software.desktop']"
-    gsettings set org.gnome.shell favorite-apps "['chromium-browser.desktop', 'org.gnome.Nautilus.desktop', 'gnome-terminal.desktop']"
-
-    # disable bluetooth
-    rfkill block bluetooth
-
-    # disable touchpad
-    gsettings set org.gnome.desktop.peripherals.touchpad send-events 'disabled'
-    sudo modprobe -r psmouse && sudo modprobe psmouse
-
-    # caps to escape
-    gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
-
-    # 12 hour clock
-    gsettings set org.gnome.desktop.interface clock-format 12h
-
-    # TODO: disable alert sound
-    # pactl play-sample audio-volume-change
-    gsettings set org.gnome.desktop.sound event-sounds false
-  fi
 fi
 
-# dotfiles
+echo "disable last login terminal prompt"
+touch ~/.hushlogin
+
+echo "dotfiles install"
 if [ $(hostname) = "dotfiles-test" ]; then
   rm -Rf ~/.dotfiles
   cp -R /vagrant ~/.dotfiles
@@ -167,24 +85,26 @@ else
   if cd ~/.dotfiles; then
     git pull
   else
-    git clone git://github.com/christophermanning/dotfiles.git ~/.dotfiles
+    git clone --quiet git@github.com:christophermanning/dotfiles.git ~/.dotfiles
   fi
 fi
 env RCRC=$HOME/.dotfiles/rcrc rcup
 
-# vim-plug install plugins
-vim +PlugInstall +qa
+echo "vim-plug install"
+curl -sfLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim +'PlugInstall --sync' +qa
 
-# zsh
-if cd "${ZDOTDIR:-$HOME}/.zprezto"; then
-  git pull
+echo "zprezto install"
+if [ -d "${ZDOTDIR:-$HOME}/.zprezto" ]; then
+  git pull --quiet
 else
-  git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+  git clone --quiet --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 fi
 
+echo "change shell to zsh"
 sudo chsh -s /bin/zsh $USER
 
-# setup local files
+# setup local files (if there is a tty)
 if [ -t 1 ]; then
   touch ~/.zshrc.local
 
@@ -206,5 +126,5 @@ fi
 [[ -f install_private.sh ]] && ./install_private.sh
 
 if [[ "$OSTYPE" != darwin* ]]; then
-  sudo apt-get -y autoremove
+  sudo apt-get -y autoremove > /dev/null
 fi

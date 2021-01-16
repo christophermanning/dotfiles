@@ -9,8 +9,6 @@ setopt menu_complete
 # disable auto-setting terminal title for tmuxinator
 DISABLE_AUTO_TITLE="true"
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-
 # GO
 export GOPATH=~/workspace/go
 export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
@@ -23,9 +21,7 @@ export EDITOR='vi'
 bindkey -v
 export KEYTIMEOUT=1
 bindkey '^r' history-incremental-search-backward
-
-# use homebrew vim instead of builtin vi
-alias vi=/usr/local/bin/vim
+alias vi=vim
 
 # Personal Aliases
 alias R='R --quiet'
