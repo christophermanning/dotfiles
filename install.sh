@@ -82,10 +82,11 @@ if [ $(hostname) = "dotfiles-test" ]; then
   rm -Rf ~/.dotfiles
   cp -R /vagrant ~/.dotfiles
 else
-  if cd ~/.dotfiles; then
+  if [ -d "~/.dotfiles" ]; then
     git pull
   else
-    git clone --quiet git@github.com:christophermanning/dotfiles.git ~/.dotfiles
+    # https clone so a login isn't required
+    git clone --quiet https://github.com/christophermanning/dotfiles.git ~/.dotfiles
   fi
 fi
 env RCRC=$HOME/.dotfiles/rcrc rcup

@@ -70,3 +70,6 @@ let g:move_auto_indent = 0
 
 " faster ctrlp
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden --ignore .git -g ""'"
+
+" vim-go
+let g:go_fmt_command="goimports"
