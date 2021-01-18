@@ -9,7 +9,7 @@ pushd /tmp && \
 wget -N https://raw.githubusercontent.com/christophermanning/dotfiles/master/install.sh && \
 chmod u+x install.sh && \
 sha=$(shasum install.sh | cut -f1 -d' ') && \
-[ "$sha" = "1c92f3749762447383df77cb363b4e96da24360d" ] && \
+[ "$sha" = "3b223fe70eed897ab66afbc61cb3f1b014809c29" ] && \
 ./install.sh && \
 popd
 ```

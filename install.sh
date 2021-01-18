@@ -118,8 +118,14 @@ if [ -t 1 ]; then
   echo "export GIT_AUTHOR_EMAIL=\"$git_email\" && export GIT_COMMITTER_EMAIL=\$GIT_AUTHOR_EMAIL" >> ~/.zshrc.local
 
   if [ ! -f ~/.ssh/id_rsa ]; then
-    ssh-keygen -t rsa -b 4096 -C "$git_email"
+    ssh-keygen -t ed25519 -C "$git_email"
     ssh-add ~/.ssh/id_rsa
+  fi
+
+  read -p "Install ubuntu_gui?" -n 1 -r
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    ./install_ubuntu_gui.sh
   fi
 fi
 
