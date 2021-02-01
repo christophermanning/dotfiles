@@ -21,7 +21,7 @@ gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profi
 
 # desktop preferences
 gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.Software.desktop']"
-gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'gnome-terminal.desktop']"
+gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'firefox.desktop', 'gnome-terminal.desktop']"
 
 # disable bluetooth
 rfkill block bluetooth
