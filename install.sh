@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+DOTFILES_DIR=~/.dotfiles
+
 cd ~
 
 if [[ "$OSTYPE" == darwin* ]]; then
@@ -15,7 +17,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
   brew install rcm
 
   # load iterm2 preferences
-  defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.dotfiles/iterm2"
+  defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$DOTFILES_DIR/iterm2"
   defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 
   # capslock -> esc (https://developer.apple.com/library/content/technotes/tn2450/_index.html)
@@ -77,19 +79,19 @@ fi
 echo "disable last login terminal prompt"
 touch ~/.hushlogin
 
-echo "dotfiles install"
+echo "dotfiles install to $DOTFILES_DIR"
 if [ $(hostname) = "dotfiles-test" ]; then
-  rm -Rf ~/.dotfiles
-  cp -R /vagrant ~/.dotfiles
+  rm -Rf $DOTFILES_DIR
+  cp -R /vagrant $DOTFILES_DIR
 else
-  if [ -d "~/.dotfiles" ]; then
+  if [ -d "$DOTFILES_DIR" ]; then
     git pull
   else
     # https clone so a login isn't required
-    git clone --quiet https://github.com/christophermanning/dotfiles.git ~/.dotfiles
+    git clone --quiet https://github.com/christophermanning/dotfiles.git $DOTFILES_DIR
   fi
 fi
-env RCRC=$HOME/.dotfiles/rcrc rcup
+env RCRC=$DOTFILES_DIR/rcrc rcup
 
 echo "vim-plug install"
 curl -sfLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -117,15 +119,15 @@ if [ -t 1 ]; then
   read git_email
   echo "export GIT_AUTHOR_EMAIL=\"$git_email\" && export GIT_COMMITTER_EMAIL=\$GIT_AUTHOR_EMAIL" >> ~/.zshrc.local
 
-  if [ ! -f ~/.ssh/id_rsa ]; then
+  if [ ! -f ~/.ssh/id_ed25519 ]; then
     ssh-keygen -t ed25519 -C "$git_email"
-    ssh-add ~/.ssh/id_rsa
+    ssh-add ~/.ssh/id_ed25519
   fi
 
   read -p "Install ubuntu_gui?" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
-    ./install_ubuntu_gui.sh
+    $DOTFILES_DIR/install_ubuntu_gui.sh
   fi
 fi
 
