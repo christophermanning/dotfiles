@@ -1,1 +1,1 @@
-EXCLUDES="README.md Vagrantfile *.sh"
+EXCLUDES="Brewfile* Makefile README.md Vagrantfile *.sh"

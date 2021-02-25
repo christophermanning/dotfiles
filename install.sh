@@ -6,15 +6,9 @@ DOTFILES_DIR=~/.dotfiles
 cd ~
 
 if [[ "$OSTYPE" == darwin* ]]; then
-  # https://github.com/Homebrew/install#install-homebrew
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  brew tap caskroom/cask
-
-  brew install git curl wget tree htop tmux tig the_silver_searcher mtr iproute2mac zsh vim
-  brew cask install iterm2 docker google-chrome
-
-  brew tap thoughtbot/formulae
-  brew install rcm
+  # Homebrew https://github.com/Homebrew/install#install-homebrew
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  brew bundle -v
 
   # load iterm2 preferences
   defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$DOTFILES_DIR/iterm2"
