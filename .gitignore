@@ -2,3 +2,5 @@ install_private.sh
 
 # for personal dotfiles and a single machine install, this doesn't need to be committed
 Brewfile.lock.json
+
+Dockerfile.build

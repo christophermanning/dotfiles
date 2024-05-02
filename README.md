@@ -16,7 +16,7 @@ popd
 
 ## Testing
 
-Run `vagrant up` to ensure the install.sh script works correctly.
+`make test`
 
 ## Components
 
