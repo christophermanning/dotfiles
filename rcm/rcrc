@@ -1,0 +1,4 @@
+# http://thoughtbot.github.io/rcm/rcrc.5.html
+
+# separate dotfiles into folder groups for better organization and custom setups
+DOTFILES_DIRS=$(find * -type d | grep -P '^(git|rcm|vim|zsh)')
