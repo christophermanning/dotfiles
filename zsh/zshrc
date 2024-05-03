@@ -1,50 +1,16 @@
-# Prezto
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+source ~/.zshrc.omz
+source ~/.zshrc.git
 
-# select first option when tab competing
-setopt menu_complete
-
-# disable auto-setting terminal title for tmuxinator
-DISABLE_AUTO_TITLE="true"
-
-# GO
-export GOPATH=~/workspace/go
-export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
-
-# NPM
-export PATH=$PATH:~/.npm/bin
-
-# VI
-export EDITOR='vi'
-bindkey -v
-export KEYTIMEOUT=1
-bindkey '^r' history-incremental-search-backward
-alias vi=vim
-
-# Personal Aliases
-alias R='R --quiet'
-alias xc='xclip -selection clipboard'
+# aliases
+alias ..='cd ..'
 alias tig='tig status'
-
-# directory aliases
 alias l='ls -lah'
 
-# git aliases
-function current_branch() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
-  ref=$(git rev-parse --short HEAD 2> /dev/null) || return
-  echo ${ref#refs/heads/}
-}
-alias ggpush='git push origin $(current_branch)'
-alias gc='git commit -v'
-alias gl='git pull'
-alias gst='git status'
-alias ga='git add'
-alias gco='git checkout'
-alias gcm='git checkout master'
-alias gd='git diff'
+# vi mode
+bindkey -v
+
+# search history
+bindkey '^r' history-incremental-search-backward
 
 # local overrides
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

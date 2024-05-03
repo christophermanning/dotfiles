@@ -1,0 +1,13 @@
+function current_branch() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
+  ref=$(git rev-parse --short HEAD 2> /dev/null) || return
+  echo ${ref#refs/heads/}
+}
+alias ggpush='git push origin $(current_branch)'
+alias gc='git commit -v'
+alias gl='git pull'
+alias gst='git status'
+alias ga='git add'
+alias gco='git checkout'
+alias gcm='git checkout master'
+alias gd='git diff'
