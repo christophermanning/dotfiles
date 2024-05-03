@@ -6,6 +6,10 @@
 - Clone this repo to `~/dotfiles`
 - Run `RCRC=~/dotfiles/rcm/rcrc rcup -v`
 
+## Usage
+
+Run `rcup -v` to sync dotfile directories specified in ~/.rcrc
+
 ## Testing
 
 `make test`
