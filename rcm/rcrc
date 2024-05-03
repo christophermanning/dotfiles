@@ -1,4 +1,7 @@
-# http://thoughtbot.github.io/rcm/rcrc.5.html
+# https://thoughtbot.github.io/rcm/rcrc.5.html
 
 # separate dotfiles into folder groups for better organization and custom setups
-DOTFILES_DIRS=$(find * -type d | grep -P '^(git|rcm|vim|zsh)')
+DOTFILES_DIRS=$(find ~/dotfiles -type d | grep -E '^.*dotfiles/(git|rcm|tig|vim)')
+
+# don't link any install files
+EXCLUDES=install.sh
