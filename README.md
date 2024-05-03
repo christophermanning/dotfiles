@@ -13,7 +13,7 @@
 ## Components
 
 - [rcm](https://github.com/thoughtbot/rcm) for rc file (dotfile) management
-    - vim
-- [vim-plug](https://github.com/junegunn/vim-plug) a minimalist vim plugin manager
-    - zsh
-- [Prezto](https://github.com/sorin-ionescu/prezto) a configuration framework for Zsh
+- vim
+  - [vim-plug](https://github.com/junegunn/vim-plug) a minimalist vim plugin manager
+- zsh
+  - [oh my zsh](https://ohmyz.sh/) a configuration framework for Zsh
