@@ -1,3 +1,5 @@
 # https://jonas.github.io/tig/doc/tigrc.5.html
 
+# make the commit dialog show the changes
+bind generic C none
 bind generic C !git commit -v
