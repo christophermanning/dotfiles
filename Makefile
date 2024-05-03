@@ -5,7 +5,7 @@ all: shasum
 shasum:
 	@- sed -i '' -E "s/([a-z0-9]{40})/${SHA}/" README.md
 
-Dockerfile.build: Dockerfile
+Dockerfile.build: Dockerfile ./*/install.sh
 	docker build -t dotfiles .
 	touch $@
 
@@ -21,4 +21,5 @@ test: Dockerfile.build
 		/bin/bash -c ' \
 		RCRC=~/dotfiles/rcm/rcrc rcup -v; \
 		ls -lah ~; \
+		/bin/bash; \
 		'
