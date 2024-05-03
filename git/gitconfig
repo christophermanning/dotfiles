@@ -1,6 +1,5 @@
 [user]
-  name = Christopher Manning
-  #email is read from GIT_AUTHOR_EMAIL and GIT_COMMITTER_EMAIL set in ~/.zshenv
+  # name and email are read from GIT_* set in ~/.zshrc-local
 [core]
   excludesfile = ~/.gitignore_global
 [merge]
